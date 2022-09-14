@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../AppContext";
-import uniqid from "uniqid";
-import { AppContextProps, DrawItemProps } from "../../models/Interfaces";
+
+import { AppContextProps } from "../../models/Interfaces";
 import { Box, IconButton, Tooltip } from "@mui/material";
 import PanoramaFishEyeIcon from "@mui/icons-material/PanoramaFishEye";
 import CropSquareIcon from "@mui/icons-material/CropSquare";
