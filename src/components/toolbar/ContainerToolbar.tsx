@@ -1,20 +1,14 @@
-import { Box, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext";
 import { AppContextProps } from "../../models/Interfaces";
 
-export default function TopToolBar() {
+export default function ContainerToolbar() {
   const { gridSize, containerDimensions, setContainerDimensions, setGridSize } =
     useContext<AppContextProps>(AppContext);
+
   return (
-    <Box
-      display="flex"
-      padding={2}
-      sx={{
-        flexDirection: "row",
-        backgroundColor: "grey.800",
-      }}
-    >
+    <>
       <TextField
         id="outlined-basic"
         label="Grid size"
@@ -69,6 +63,6 @@ export default function TopToolBar() {
         }
         sx={{ backgroundColor: "white" }}
       />
-    </Box>
+    </>
   );
 }

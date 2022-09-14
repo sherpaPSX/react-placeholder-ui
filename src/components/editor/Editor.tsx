@@ -4,16 +4,24 @@ import { Rnd } from "react-rnd";
 import { AppContext } from "../../AppContext";
 import { AppContextProps } from "../../models/Interfaces";
 import DrawItem from "../DrawItem";
-import Toolbar from "./Toolbar";
-import TopToolBar from "./TopToolBar";
 
 export default function Editor() {
-  const { containerDimensions, setContainerDimensions, gridSize, elements } =
-    useContext<AppContextProps>(AppContext);
+  const {
+    containerDimensions,
+    setContainerDimensions,
+    gridSize,
+    elements,
+    setSelectedElement,
+  } = useContext<AppContextProps>(AppContext);
 
   return (
     <>
-      <Box position="relative" padding={2} flexGrow={1}>
+      <Box
+        position="relative"
+        padding={2}
+        flexGrow={1}
+        onClick={() => setSelectedElement(null)}
+      >
         <Rnd
           disableDragging={true}
           style={{ backgroundSize: `${gridSize}px ${gridSize}px` }}

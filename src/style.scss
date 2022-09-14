@@ -1,7 +1,7 @@
 .draw-item {
-  background: rgb(121, 121, 121);
+  background: rgb(165, 165, 165);
   border: 1px solid black;
-  transition: background-color 0.1s ease;
+  transition: color 0.1s ease;
   display: flex !important;
   justify-content: center;
   align-items: center;
@@ -10,6 +10,10 @@
   }
   &.is-circle {
     border-radius: 100%;
+  }
+
+  &.is-selected {
+    border: 1px dashed red;
   }
 }
 

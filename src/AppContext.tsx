@@ -15,6 +15,8 @@ export const AppContext = createContext<AppContextProps>({
   setGridSize: () => {},
   elements: [],
   setElements: () => {},
+  selectedElement: null,
+  setSelectedElement: () => {},
 });
 
 export default function AppContextProvider({
@@ -26,8 +28,7 @@ export default function AppContextProvider({
     useState<ContainerDimensionsProps>({ width: 1000, height: 500 });
   const [gridSize, setGridSize] = useState<number>(10);
   const [elements, setElements] = useState<DrawItemProps[]>([]);
-
-  console.log(containerDimensions);
+  const [selectedElement, setSelectedElement] = useState<string | null>(null);
 
   return (
     <AppContext.Provider
@@ -38,6 +39,8 @@ export default function AppContextProvider({
         setGridSize,
         elements,
         setElements,
+        selectedElement,
+        setSelectedElement,
       }}
     >
       {children}

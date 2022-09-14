@@ -4,15 +4,18 @@ import { DrawItemProps } from "../models/Interfaces";
 export class DrawItemFunctions {
   elements: DrawItemProps[];
   setElements: (elements: DrawItemProps[]) => void;
+  setSelectedElement: (id: string | null) => void;
   constructor(
     elements: DrawItemProps[],
-    setElements: (elements: DrawItemProps[]) => void
+    setElements: (elements: DrawItemProps[]) => void,
+    setSelectdElement: (id: string | null) => void
   ) {
     this.elements = elements;
     this.setElements = setElements;
+    this.setSelectedElement = setSelectdElement;
   }
 
-  onUpdateHadler(ev: DrawItemProps) {
+  onUpdate(ev: DrawItemProps) {
     const newState = this.elements.map((item) => {
       if (item.id === ev.id) {
         return ev;
@@ -23,7 +26,9 @@ export class DrawItemFunctions {
     this.setElements(newState);
   }
 
-  onCloneHandler(ev: DrawItemProps) {
+  onClone(ev: DrawItemProps) {
+    const id = uniqid();
+    this.setSelectedElement(id);
     this.setElements([
       ...this.elements,
       {
@@ -31,25 +36,29 @@ export class DrawItemFunctions {
         height: ev.height,
         posX: 0,
         posY: 0,
-        id: uniqid(),
-        isNew: true,
+        rounded: ev.rounded,
+        id,
         isCircle: ev.isCircle,
       },
     ]);
   }
 
-  onDeleteHandler(id: string) {
+  onDelete(id: string) {
+    this.setSelectedElement(null);
     const newState = this.elements.filter((item) => item.id !== id);
     this.setElements(newState);
   }
 
   renderNewElement(isCircle?: boolean) {
+    const id = uniqid();
+    this.setSelectedElement(id);
     return {
       width: 100,
       height: 100,
       posX: 0,
       posY: 0,
-      id: uniqid(),
+      rounded: 0,
+      id,
       isNew: true,
       isCircle: isCircle ? isCircle : undefined,
     } as DrawItemProps;

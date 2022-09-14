@@ -6,19 +6,19 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { Box } from "@mui/material";
 import Footer from "./components/Footer";
-import TopToolBar from "./components/editor/TopToolBar";
-import Toolbar from "./components/editor/Toolbar";
+import TopToolBar from "./components/toolbar/TopToolBar";
+import Toolbar from "./components/toolbar/Toolbar";
 
 function App() {
   return (
-    <Box display="flex" flexDirection="column" sx={{ minHeight: "100vh" }}>
+    <Box display="flex" flexDirection="column" sx={{ height: "100vh" }}>
       <Navbar />
       <Box
         sx={{ flexGrow: 1, overflow: "auto", flexDirection: "column" }}
         display="flex"
       >
         <TopToolBar />
-        <Box display="flex" sx={{ flexGrow: 1 }}>
+        <Box display="flex" sx={{ flexGrow: 1, overflow: "auto" }}>
           <Toolbar />
           <Box
             width="100%"

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CodeBlock, dracula } from "react-code-blocks";
+import { CopyBlock, dracula } from "react-code-blocks";
 import prettyFormat from "pretty-format";
 import renderer from "react-test-renderer";
 import { AppContext } from "../AppContext";
@@ -12,8 +12,8 @@ export default function CodeSnippet() {
   const { elements } = useContext<AppContextProps>(AppContext);
 
   return (
-    <Box marginRight={2}>
-      <CodeBlock
+    <Box marginRight={2} marginBottom={2}>
+      <CopyBlock
         text={prettyFormat(renderer.create(<>{SVGrender(elements)}</>), {
           plugins: [ReactTestComponent],
           printFunctionName: false,

@@ -4,7 +4,7 @@ export interface DrawItemProps {
   height: number;
   posX: number;
   posY: number;
-  isNew?: boolean;
+  rounded: number;
   isCircle?: boolean;
 }
 
@@ -20,4 +20,6 @@ export interface AppContextProps {
   setGridSize: (size: number) => void;
   elements: DrawItemProps[];
   setElements: (elements: DrawItemProps[]) => void;
+  selectedElement: string | null;
+  setSelectedElement: (id: string | null) => void;
 }

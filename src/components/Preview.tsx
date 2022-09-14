@@ -20,6 +20,8 @@ export const SVGrender = (elements: DrawItemProps[]) => {
         y={item.posY}
         width={item.width}
         height={item.height}
+        rx={item.rounded}
+        ry={item.rounded}
       />
     );
   });

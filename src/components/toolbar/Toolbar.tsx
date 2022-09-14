@@ -8,8 +8,13 @@ import CropSquareIcon from "@mui/icons-material/CropSquare";
 import { DrawItemFunctions } from "../../functions/drawItemFunctions";
 
 export default function Toolbar() {
-  const { elements, setElements } = useContext<AppContextProps>(AppContext);
-  const methods = new DrawItemFunctions(elements, setElements);
+  const { elements, setElements, setSelectedElement } =
+    useContext<AppContextProps>(AppContext);
+  const methods = new DrawItemFunctions(
+    elements,
+    setElements,
+    setSelectedElement
+  );
   return (
     <Box
       display="flex"
