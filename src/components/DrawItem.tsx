@@ -53,6 +53,7 @@ export default function Element(props: DrawItemProps) {
           posY: position.y,
         });
       }}
+      onResizeStop={() => setSelectedElement(id)}
       dragGrid={[gridSize, gridSize]}
       resizeGrid={[gridSize, gridSize]}
       lockAspectRatio={isCircle}

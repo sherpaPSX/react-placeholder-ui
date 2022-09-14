@@ -59,7 +59,6 @@ export class DrawItemFunctions {
       posY: 0,
       rounded: 0,
       id,
-      isNew: true,
       isCircle: isCircle ? isCircle : undefined,
     } as DrawItemProps;
   }

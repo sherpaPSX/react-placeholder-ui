@@ -22,7 +22,7 @@ export default function Navbar() {
         variant="h5"
         component="h1"
       >
-        React loading placeholder UI
+        SVG Skeleton Generator GUI
       </Typography>
       <div>
         <Button
