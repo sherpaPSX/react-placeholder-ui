@@ -30,6 +30,7 @@ function App() {
               <Route path="/" element={<Editor />}></Route>
               <Route path="/code" element={<CodeSnippet />}></Route>
               <Route path="/preview" element={<Preview />}></Route>
+              <Route path="*" element={<Editor />} />
             </Routes>
           </Box>
         </Box>
