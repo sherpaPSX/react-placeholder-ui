@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import DrawItemProps from "../models/DrawItem";
-import { AppContext } from "../App";
 import ContentLoader from "react-content-loader";
+import { AppContext } from "../AppContext";
+import { AppContextProps, DrawItemProps } from "../models/Interfaces";
 
 export const SVGrender = (elements: DrawItemProps[]) => {
   return elements.map((item) => {
@@ -26,12 +26,15 @@ export const SVGrender = (elements: DrawItemProps[]) => {
 };
 
 export default function Preview() {
-  const { elements, containerHeight } = useContext(AppContext);
+  const { containerDimensions, elements } =
+    useContext<AppContextProps>(AppContext);
   return (
     <ContentLoader
-      viewBox={`0 0 1000 ${containerHeight}`}
+      viewBox={`0 0 ${containerDimensions.width} ${containerDimensions.height}`}
       backgroundColor="#CCD7E1"
       foregroundColor="#E6EBF0"
+      width={containerDimensions.width}
+      height={containerDimensions.height}
     >
       {SVGrender(elements)}
     </ContentLoader>

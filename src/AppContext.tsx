@@ -1,19 +1,9 @@
 import { createContext, ReactNode, useState } from "react";
-import DrawItemProps from "./DrawItem";
-
-export type ContainerDimensionsProps = {
-  width: number;
-  height: number;
-};
-
-export interface AppContextProps {
-  containerDimensions: ContainerDimensionsProps;
-  setContainerDimensions: (dimesions: ContainerDimensionsProps) => void;
-  gridSize: number;
-  setGridSize: (size: number) => void;
-  elements: DrawItemProps[];
-  setElements: (elements: DrawItemProps[]) => void;
-}
+import {
+  AppContextProps,
+  ContainerDimensionsProps,
+  DrawItemProps,
+} from "./models/Interfaces";
 
 export const AppContext = createContext<AppContextProps>({
   containerDimensions: {
@@ -34,8 +24,10 @@ export default function AppContextProvider({
 }) {
   const [containerDimensions, setContainerDimensions] =
     useState<ContainerDimensionsProps>({ width: 1000, height: 500 });
-  const [gridSize, setGridSize] = useState<number>(20);
+  const [gridSize, setGridSize] = useState<number>(10);
   const [elements, setElements] = useState<DrawItemProps[]>([]);
+
+  console.log(containerDimensions);
 
   return (
     <AppContext.Provider

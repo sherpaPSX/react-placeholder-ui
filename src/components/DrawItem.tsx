@@ -1,34 +1,21 @@
 import { Rnd } from "react-rnd";
-import React, { useContext, useEffect, useState } from "react";
-import DrawItemProps from "../models/DrawItem";
-import { AppContext, AppContextProps } from "../App";
+import { useContext, useState } from "react";
 import classNames from "classnames";
-
-interface Props extends DrawItemProps {
-  onUpdate: (props: DrawItemProps) => void;
-  onClone: (props: DrawItemProps) => void;
-  onDelete: (id: string) => void;
-}
+import { AppContext } from "../AppContext";
+import { DrawItemFunctions } from "../functions/drawItemFunctions";
+import { AppContextProps, DrawItemProps } from "../models/Interfaces";
 
 function roundToNearest(num: number, modulo: number) {
   return Math.round(num / modulo) * modulo;
 }
 
-export default function Element(props: Props) {
-  const {
-    width,
-    height,
-    posX,
-    posY,
-    isNew,
-    onUpdate,
-    onClone,
-    onDelete,
-    id,
-    isCircle,
-  } = props;
-  const { gridSize } = useContext(AppContext);
+export default function Element(props: DrawItemProps) {
+  const { width, height, posX, posY, isNew, id, isCircle } = props;
+  const { gridSize, elements, setElements } =
+    useContext<AppContextProps>(AppContext);
   const [showButtons, setShowButtons] = useState(false);
+
+  const methods = new DrawItemFunctions(elements, setElements);
 
   return (
     <Rnd
@@ -43,7 +30,7 @@ export default function Element(props: Props) {
       }}
       size={{ width, height }}
       onDragStop={(e, d) => {
-        onUpdate({
+        methods.onUpdateHadler({
           ...props,
           posX: roundToNearest(d.x, gridSize),
           posY: roundToNearest(d.y, gridSize),
@@ -51,7 +38,7 @@ export default function Element(props: Props) {
         });
       }}
       onResize={(e, direction, ref, delta, position) => {
-        onUpdate({
+        methods.onUpdateHadler({
           ...props,
           width: parseInt(ref.style.width),
           height: parseInt(ref.style.height),
@@ -71,11 +58,13 @@ export default function Element(props: Props) {
         {width} X {height}
         {showButtons && (
           <>
-            <button onClick={() => onClone({ ...props })}>Clone</button>
+            <button onClick={() => methods.onCloneHandler({ ...props })}>
+              Clone
+            </button>
             <button
               onClick={(e) => {
                 e.preventDefault();
-                onDelete(id);
+                methods.onDeleteHandler(id);
               }}
             >
               Delete
