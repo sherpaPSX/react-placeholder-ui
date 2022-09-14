@@ -4,17 +4,15 @@ import classNames from "classnames";
 import { AppContext } from "../AppContext";
 import { DrawItemFunctions } from "../functions/drawItemFunctions";
 import { AppContextProps, DrawItemProps } from "../models/Interfaces";
-
-function roundToNearest(num: number, modulo: number) {
-  return Math.round(num / modulo) * modulo;
-}
+import { Box, IconButton, Tooltip } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 export default function Element(props: DrawItemProps) {
   const { width, height, posX, posY, isNew, id, isCircle } = props;
   const { gridSize, elements, setElements } =
     useContext<AppContextProps>(AppContext);
   const [showButtons, setShowButtons] = useState(false);
-
   const methods = new DrawItemFunctions(elements, setElements);
 
   return (
@@ -22,7 +20,7 @@ export default function Element(props: DrawItemProps) {
       bounds=".wrapper"
       className={classNames(
         { "is-new": isNew, "is-circle": isCircle },
-        "draw-item "
+        "draw-item"
       )}
       position={{
         x: posX,
@@ -32,8 +30,8 @@ export default function Element(props: DrawItemProps) {
       onDragStop={(e, d) => {
         methods.onUpdateHadler({
           ...props,
-          posX: roundToNearest(d.x, gridSize),
-          posY: roundToNearest(d.y, gridSize),
+          posX: methods.roundToNearest(d.x, gridSize),
+          posY: methods.roundToNearest(d.y, gridSize),
           isNew: false,
         });
       }}
@@ -51,27 +49,44 @@ export default function Element(props: DrawItemProps) {
       resizeGrid={[gridSize, gridSize]}
       lockAspectRatio={isCircle}
     >
-      <div
+      <Box
         onMouseEnter={() => setShowButtons(true)}
         onMouseLeave={() => setShowButtons(false)}
+        sx={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          top: 0,
+          left: 0,
+        }}
       >
-        {width} X {height}
         {showButtons && (
-          <>
-            <button onClick={() => methods.onCloneHandler({ ...props })}>
-              Clone
-            </button>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                methods.onDeleteHandler(id);
-              }}
-            >
-              Delete
-            </button>
-          </>
+          <Box
+            position="absolute"
+            sx={{ right: 0, top: 0, backgroundColor: "rgba(0,0,0, .2)" }}
+          >
+            <Tooltip title="Clone element">
+              <IconButton
+                aria-label="Clone element"
+                onClick={() => methods.onCloneHandler({ ...props })}
+              >
+                <ContentCopyIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete element">
+              <IconButton
+                aria-label="Delete element"
+                onClick={(e) => {
+                  e.preventDefault();
+                  methods.onDeleteHandler(id);
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+          </Box>
         )}
-      </div>
+      </Box>
     </Rnd>
   );
 }

@@ -42,4 +42,20 @@ export class DrawItemFunctions {
     const newState = this.elements.filter((item) => item.id !== id);
     this.setElements(newState);
   }
+
+  renderNewElement(isCircle?: boolean) {
+    return {
+      width: 100,
+      height: 100,
+      posX: 0,
+      posY: 0,
+      id: uniqid(),
+      isNew: true,
+      isCircle: isCircle ? isCircle : undefined,
+    } as DrawItemProps;
+  }
+
+  roundToNearest(num: number, incrementor: number) {
+    return Math.round(num / incrementor) * incrementor;
+  }
 }

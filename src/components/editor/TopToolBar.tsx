@@ -1,3 +1,4 @@
+import { Box, TextField } from "@mui/material";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext";
 import { AppContextProps } from "../../models/Interfaces";
@@ -6,17 +7,38 @@ export default function TopToolBar() {
   const { gridSize, containerDimensions, setContainerDimensions, setGridSize } =
     useContext<AppContextProps>(AppContext);
   return (
-    <header>
-      <input
+    <Box
+      display="flex"
+      padding={2}
+      sx={{
+        flexDirection: "row",
+        backgroundColor: "grey.800",
+      }}
+    >
+      <TextField
+        id="outlined-basic"
+        label="Grid size"
+        variant="filled"
         type="number"
-        step={2}
+        size="small"
+        inputProps={{
+          step: 2,
+        }}
         placeholder="Grid size"
         value={gridSize}
         onChange={(ev) => setGridSize(parseInt(ev.target.value))}
+        sx={{ backgroundColor: "white", marginRight: 2 }}
       />
-      <input
+
+      <TextField
+        id="outlined-basic"
+        label="Container width"
+        variant="filled"
+        size="small"
         type="number"
-        step={gridSize}
+        inputProps={{
+          step: gridSize,
+        }}
         placeholder="Container width"
         value={containerDimensions.width}
         onChange={(ev) =>
@@ -25,10 +47,18 @@ export default function TopToolBar() {
             height: containerDimensions.height,
           })
         }
+        sx={{ backgroundColor: "white", marginRight: 2 }}
       />
-      <input
+
+      <TextField
+        id="outlined-basic"
+        label="Container height"
+        variant="filled"
+        size="small"
         type="number"
-        step={gridSize}
+        inputProps={{
+          step: gridSize,
+        }}
         placeholder="Container height"
         value={containerDimensions.height}
         onChange={(ev) =>
@@ -37,7 +67,8 @@ export default function TopToolBar() {
             height: parseInt(ev.target.value),
           })
         }
+        sx={{ backgroundColor: "white" }}
       />
-    </header>
+    </Box>
   );
 }

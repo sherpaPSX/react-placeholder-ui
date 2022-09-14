@@ -2,31 +2,27 @@ import "./style.scss";
 import Preview from "./components/Preview";
 import CodeSnippet from "./components/CodeSnippet";
 import Editor from "./components/editor/Editor";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { Box } from "@mui/material";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Editor</Link>
-          </li>
-          <li>
-            <Link to="/code">Code</Link>
-          </li>
-          <li>
-            <Link to="/preview">Preview</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Editor />}></Route>
-        <Route path="/code" element={<CodeSnippet />}></Route>
-        <Route path="/preview" element={<Preview />}></Route>
-      </Routes>
-    </>
+    <Box display="flex" flexDirection="column" sx={{ minHeight: "100vh" }}>
+      <Navbar />
+      <Box
+        sx={{ flexGrow: 1, overflow: "auto", flexDirection: "column" }}
+        display="flex"
+      >
+        <Routes>
+          <Route path="/" element={<Editor />}></Route>
+          <Route path="/code" element={<CodeSnippet />}></Route>
+          <Route path="/preview" element={<Preview />}></Route>
+        </Routes>
+      </Box>
+      <Footer />
+    </Box>
   );
 }
 
