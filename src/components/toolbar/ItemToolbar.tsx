@@ -1,7 +1,7 @@
 import { IconButton, TextField, Tooltip } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../AppContext";
 import { DrawItemFunctions } from "../../functions/drawItemFunctions";
 import { AppContextProps, DrawItemProps } from "../../models/Interfaces";
