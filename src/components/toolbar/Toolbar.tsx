@@ -24,7 +24,7 @@ export default function Toolbar() {
       }}
       padding={1}
     >
-      <Tooltip title="Add rectangle">
+      <Tooltip title="Add rectangle" placement="right">
         <IconButton
           aria-label="Add rectangle"
           sx={{ color: "white" }}
@@ -33,7 +33,7 @@ export default function Toolbar() {
           <CropSquareIcon />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Add circle">
+      <Tooltip title="Add circle" placement="right">
         <IconButton
           aria-label="Add circle"
           sx={{ color: "white" }}
