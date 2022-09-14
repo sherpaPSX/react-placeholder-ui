@@ -1,0 +1,36 @@
+body {
+  margin: 2rem;
+}
+
+.draw-item {
+  background: rgb(121, 121, 121);
+  border: 1px solid black;
+  transition: background-color 0.1s ease;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  &.is-new {
+    background-color: green;
+  }
+  &.is-circle {
+    border-radius: 100%;
+  }
+}
+
+.react-draggable {
+  &-dragging {
+    opacity: 0.5;
+  }
+}
+
+.halfTransparent {
+  opacity: 0.5;
+}
+
+.wrapper {
+  background-image: linear-gradient(
+      rgba(131, 131, 131, 0.3) 1px,
+      transparent 0.1em
+    ),
+    linear-gradient(90deg, rgba(131, 131, 131, 0.3) 1px, transparent 1px);
+}
