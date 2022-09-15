@@ -37,6 +37,7 @@ export default function Element(props: DrawItemProps) {
         y: posY,
       }}
       size={{ width, height }}
+      onDragStart={() => setSelectedElement(id)}
       onDragStop={(e, d) => {
         methods.onUpdate({
           ...props,

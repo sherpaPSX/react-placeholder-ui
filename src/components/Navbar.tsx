@@ -3,7 +3,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import CodeIcon from "@mui/icons-material/Code";
 import PreviewIcon from "@mui/icons-material/Preview";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -26,7 +26,7 @@ export default function Navbar() {
       </Typography>
       <div>
         <Button
-          component={Link}
+          component={NavLink}
           to="/"
           variant="contained"
           color="primary"
@@ -36,7 +36,7 @@ export default function Navbar() {
         </Button>
 
         <Button
-          component={Link}
+          component={NavLink}
           to="/code"
           variant="contained"
           color="primary"
@@ -47,7 +47,7 @@ export default function Navbar() {
         </Button>
         <Button
           sx={{ marginLeft: 1 }}
-          component={Link}
+          component={NavLink}
           to="/preview"
           variant="contained"
           color="primary"

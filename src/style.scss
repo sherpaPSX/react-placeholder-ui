@@ -1,6 +1,6 @@
 .draw-item {
   background: rgb(165, 165, 165);
-  border: 1px solid black;
+  border: 1px solid grey;
   transition: color 0.1s ease;
   display: flex !important;
   justify-content: center;
@@ -13,13 +13,8 @@
   }
 
   &.is-selected {
-    border: 1px dashed red;
-  }
-}
-
-.react-draggable {
-  &-dragging {
-    opacity: 0.5;
+    border: 1px dashed rgb(0, 47, 255);
+    background: rgba(44, 174, 255, 0.557);
     z-index: 100;
   }
 }

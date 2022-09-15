@@ -1,5 +1,7 @@
+import { Alert } from "@mui/material";
 import React, { useContext } from "react";
 import ContentLoader from "react-content-loader";
+import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
 import { AppContextProps, DrawItemProps } from "../models/Interfaces";
 
@@ -30,6 +32,15 @@ export const SVGrender = (elements: DrawItemProps[]) => {
 export default function Preview() {
   const { containerDimensions, elements } =
     useContext<AppContextProps>(AppContext);
+
+  if (!elements.length) {
+    return (
+      <Alert severity="info" sx={{ marginRight: 2 }}>
+        You have to add some elements first, than you can see preview :) Start
+        in the <Link to="/">Editor</Link>
+      </Alert>
+    );
+  }
   return (
     <ContentLoader
       viewBox={`0 0 ${containerDimensions.width} ${containerDimensions.height}`}
@@ -37,6 +48,7 @@ export default function Preview() {
       foregroundColor="#E6EBF0"
       width={containerDimensions.width}
       height={containerDimensions.height}
+      style={{ border: "1px solid #d9d9d9" }}
     >
       {SVGrender(elements)}
     </ContentLoader>

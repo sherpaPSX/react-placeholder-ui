@@ -5,7 +5,8 @@ import renderer from "react-test-renderer";
 import { AppContext } from "../AppContext";
 import { SVGrender } from "./Preview";
 import { AppContextProps } from "../models/Interfaces";
-import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { Alert, Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { Link } from "react-router-dom";
 const { ReactTestComponent } = prettyFormat.plugins;
 
 enum Language {
@@ -25,6 +26,15 @@ export default function CodeSnippet() {
   };
 
   console.log(language);
+
+  if (!elements.length) {
+    return (
+      <Alert severity="info" sx={{ marginRight: 2 }}>
+        You have to add some elements first, than you can see some code :) Start
+        in the <Link to="/">Editor</Link>
+      </Alert>
+    );
+  }
 
   return (
     <Box marginRight={2} marginBottom={2}>
