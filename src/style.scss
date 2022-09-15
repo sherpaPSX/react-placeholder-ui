@@ -1,13 +1,7 @@
 .draw-item {
   background: rgb(165, 165, 165);
   border: 1px solid grey;
-  transition: color 0.1s ease;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  &.is-new {
-    background-color: green;
-  }
+
   &.is-circle {
     border-radius: 100%;
   }
@@ -17,10 +11,6 @@
     background: rgba(44, 174, 255, 0.557);
     z-index: 100;
   }
-}
-
-.halfTransparent {
-  opacity: 0.5;
 }
 
 .wrapper {
