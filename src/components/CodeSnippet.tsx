@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CopyBlock, atomOneDark } from "react-code-blocks";
 import { AppContext } from "../AppContext";
 import { AppContextProps } from "../models/Interfaces";
 import { Alert, Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
@@ -56,16 +56,20 @@ export default function CodeSnippet() {
             text={renderCodeSnippet({ containerDimensions, elements })}
             language="jsx"
             showLineNumbers={false}
-            theme={dracula}
+            theme={atomOneDark}
             wrapLines={false}
           />
         ) : (
           <CopyBlock
-            text={JSON.stringify(elements, null, 2)}
+            text={JSON.stringify(
+              { containerDimensions: { ...containerDimensions }, elements },
+              null,
+              2
+            )}
             language="json"
             showLineNumbers={false}
-            theme={dracula}
-            wrapLines={false}
+            theme={atomOneDark}
+            wrapLines={true}
           />
         )}
       </Box>
