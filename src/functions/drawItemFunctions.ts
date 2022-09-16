@@ -34,8 +34,8 @@ export class DrawItemFunctions {
       {
         width: ev.width,
         height: ev.height,
-        posX: 0,
-        posY: 0,
+        posX: ev.posX + 10,
+        posY: ev.posY + 10,
         rounded: ev.rounded,
         id,
         isCircle: ev.isCircle,

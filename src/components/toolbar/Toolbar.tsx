@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AppContext } from "../../AppContext";
-
 import { AppContextProps } from "../../models/Interfaces";
 import { Box, IconButton, Tooltip } from "@mui/material";
 import PanoramaFishEyeIcon from "@mui/icons-material/PanoramaFishEye";

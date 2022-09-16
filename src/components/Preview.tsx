@@ -1,33 +1,9 @@
 import { Alert } from "@mui/material";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ContentLoader from "react-content-loader";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContext";
-import { AppContextProps, DrawItemProps } from "../models/Interfaces";
-
-export const SVGrender = (elements: DrawItemProps[]) => {
-  return elements.map((item) => {
-    if (item.isCircle)
-      return (
-        <circle
-          cx={item.posX + item.width / 2}
-          cy={item.posY + item.width / 2}
-          r={item.width / 2}
-        />
-      );
-    return (
-      <rect
-        key={item.id}
-        x={item.posX}
-        y={item.posY}
-        width={item.width}
-        height={item.height}
-        rx={item.rounded}
-        ry={item.rounded}
-      />
-    );
-  });
-};
+import { AppContextProps } from "../models/Interfaces";
 
 export default function Preview() {
   const { containerDimensions, elements } =
@@ -50,7 +26,27 @@ export default function Preview() {
       height={containerDimensions.height}
       style={{ border: "1px solid #d9d9d9" }}
     >
-      {SVGrender(elements)}
+      {elements.map((item) => {
+        if (item.isCircle)
+          return (
+            <circle
+              cx={item.posX + item.width / 2}
+              cy={item.posY + item.width / 2}
+              r={item.width / 2}
+            />
+          );
+        return (
+          <rect
+            key={item.id}
+            x={item.posX}
+            y={item.posY}
+            width={item.width}
+            height={item.height}
+            rx={item.rounded}
+            ry={item.rounded}
+          />
+        );
+      })}
     </ContentLoader>
   );
 }
