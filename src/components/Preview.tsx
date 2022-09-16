@@ -30,6 +30,7 @@ export default function Preview() {
         if (item.isCircle)
           return (
             <circle
+              key={item.id}
               cx={item.posX + item.width / 2}
               cy={item.posY + item.width / 2}
               r={item.width / 2}
