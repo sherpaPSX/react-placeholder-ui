@@ -8,8 +8,26 @@ import { Box } from "@mui/material";
 import Footer from "./components/Footer";
 import TopToolBar from "./components/toolbar/TopToolBar";
 import Toolbar from "./components/toolbar/Toolbar";
+import { useContext, useEffect } from "react";
+import { AppContext } from "./AppContext";
+import { AppContextProps } from "./models/Interfaces";
 
 function App() {
+  const { elements } = useContext<AppContextProps>(AppContext);
+
+  useEffect(() => {
+    const unloadCallback = (event: any) => {
+      event.preventDefault();
+      event.returnValue = "";
+      return "";
+    };
+
+    if (elements.length) {
+      window.addEventListener("beforeunload", unloadCallback);
+      return () => window.removeEventListener("beforeunload", unloadCallback);
+    }
+  }, [elements]);
+
   return (
     <Box display="flex" flexDirection="column" sx={{ height: "100vh" }}>
       <Navbar />
