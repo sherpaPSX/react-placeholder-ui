@@ -1,4 +1,4 @@
-import { Box, Link, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 export default function Footer() {
   return (
@@ -13,12 +13,12 @@ export default function Footer() {
         paddingY: 1,
       }}
     >
-      <Typography color={"white"} fontSize={12}>
+      {/* <Typography color={"white"} fontSize={12}>
         Developed By{" "}
         <Link href="https://www.linkedin.com/in/lukas-werner/" target="_blank">
           Lukas "Sherpa" Werner
         </Link>
-      </Typography>
+      </Typography> */}
     </Box>
   );
 }
