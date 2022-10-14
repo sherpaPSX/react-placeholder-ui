@@ -13,12 +13,12 @@ export default function Footer() {
         paddingY: 1,
       }}
     >
-      {/* <Typography color={"white"} fontSize={12}>
+      <Typography color={"white"} fontSize={12}>
         Developed By{" "}
         <Link href="https://www.linkedin.com/in/lukas-werner/" target="_blank">
           Lukas "Sherpa" Werner
         </Link>
-      </Typography> */}
+      </Typography>
     </Box>
   );
 }
