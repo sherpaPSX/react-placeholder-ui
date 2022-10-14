@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography, Link } from "@mui/material";
 
 export default function Footer() {
   return (
